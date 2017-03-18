@@ -1,0 +1,24 @@
+{
+  "name": "hapitoc",
+  "version": "1.0.0",
+  "description": "Update standard hapi document files",
+  "bin": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Marsup/hapitoc.git"
+  },
+  "keywords": [
+    "hapi",
+    "toc",
+    "documentation",
+    "release"
+  ],
+  "author": "Nicolas Morel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marsup/hapitoc/issues"
+  },
+  "dependencies": {
+    "markdown-toc": "1.1.x"
+  }
+}
