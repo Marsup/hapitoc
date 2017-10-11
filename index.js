@@ -34,6 +34,12 @@ internals.generateToc = function () {
         bullets: '-',
         slugify(text) {
 
+            const customLink = /<a\s+name="([^"]+)"\s*\/>/;
+            const match = customLink.exec(text);
+            if (match) {
+                return match[1];
+            }
+
             seen[text] = seen[text] >= 0 ? seen[text] + 1 : 0;
 
             if (seen[text] > 1) {
