@@ -29,9 +29,16 @@ internals.readme = internals.defineFile('README.md');
 
 internals.generateToc = function () {
 
+    const seen = {};
     const tocOptions = {
         bullets: '-',
         slugify(text) {
+
+            seen[text] = seen[text] >= 0 ? seen[text] + 1 : 0;
+
+            if (seen[text] > 1) {
+                text += `-${(seen[text] - 1) / 2}`; // For some weird reason, slugify is called twice, so need a small trick to get the actual number
+            }
 
             return text.toLowerCase()
                 .replace(/<\/?[^>]+(>|$)/g, '')
