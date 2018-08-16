@@ -40,16 +40,18 @@ internals.generateToc = function () {
                 return match[1];
             }
 
+            text = text.toLowerCase()
+                .replace(/<\/?[^>]+(>|$)/g, '')
+                .replace(/\s/g, '-')
+                .replace(/[^\w-]/g, '');
+
             seen[text] = seen[text] >= 0 ? seen[text] + 1 : 0;
 
             if (seen[text] > 1) {
                 text += `-${(seen[text] - 1) / 2}`; // For some weird reason, slugify is called twice, so need a small trick to get the actual number
             }
 
-            return text.toLowerCase()
-                .replace(/<\/?[^>]+(>|$)/g, '')
-                .replace(/\s/g, '-')
-                .replace(/[^\w-]/g, '');
+            return text;
         }
     };
 
